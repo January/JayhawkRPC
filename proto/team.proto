@@ -1,0 +1,17 @@
+syntax = "proto3";
+
+option go_package = "jayhawkrpc/protobufs";
+
+message Team {
+  string sport = 1;
+  string coach = 2;
+  int32 wins = 3;
+  int32 losses = 4;
+}
+
+message GetTeamRequest {}
+message GetTeamResponse { repeated Team teams = 1; }
+
+service Inventory {
+  rpc GetTeamList(GetTeamRequest) returns (GetTeamResponse) {}
+}
